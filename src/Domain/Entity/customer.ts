@@ -23,6 +23,10 @@ export default class Customer {
         return this._name
     }
 
+    get Address() {
+        return this._address;
+    }
+
     get isActive(): boolean {
         return this._active;
     }
@@ -34,6 +38,10 @@ export default class Customer {
     changeName(name: string) {
         this._name = name;
         this.validate();
+    }
+
+    changeAddress(address: Address) {
+        this._address = address
     }
 
     activate() {
@@ -50,10 +58,6 @@ export default class Customer {
 
     addRewardPoints(rewardPoints: number) {
         this._rewardPoints += rewardPoints;
-    }
-
-    set Address(address: Address) {
-        this._address = address;
     }
 
     validate() {

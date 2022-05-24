@@ -14,6 +14,22 @@ export default class Address {
         this.validate();
     }
 
+    get street() {
+        return this._street;
+    }
+
+    get number() {
+        return this._number;
+    }
+
+    get zipcode() {
+        return this._zipcode;
+    }
+
+    get city() {
+        return this._city;
+    }
+
     validate() {
         if (this._street.length === 0) {
             throw new Error("Street is required");

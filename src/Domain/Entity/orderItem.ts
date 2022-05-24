@@ -15,12 +15,24 @@ export default class OrderItem {
         this.validate();
     }
 
+    get id() {
+        return this._id;
+    }
+
+    get name() {
+        return this._name;
+    }
+
     get price(): number {
         return this._price * this._quantity;
     }
 
     get quantity(): number {
         return this._quantity;
+    }
+
+    get productId() {
+        return this._productId;
     }
 
     validate(): boolean {
