@@ -3,7 +3,7 @@ import OrderModel from "./order.model";
 import ProductModel from "./product.model";
 
 @Table({
-    tableName: "order-items",
+    tableName: "order_items",
     timestamps: false,
 })
 
@@ -34,5 +34,8 @@ export default class OrderItemModel extends Model {
 
     @Column({ allowNull: false })
     declare price: number;
+
+    @Column({ allowNull: false })
+    declare price_un: number;
 
 }
