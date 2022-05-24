@@ -23,6 +23,10 @@ export default class OrderItem {
         return this._name;
     }
 
+    get price_un() {
+        return this._price;
+    }
+
     get price(): number {
         return this._price * this._quantity;
     }
