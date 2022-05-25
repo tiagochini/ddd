@@ -1,6 +1,7 @@
 import Address from "../ValueObject/address";
+import CustomerInterface from "./customer.interface";
 
-export default class Customer {
+export default class Customer implements CustomerInterface {
 
     private _id: string;
     private _name: string;
