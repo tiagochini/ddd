@@ -1,7 +1,9 @@
+import Entity from "../../@shared/Entity/entity.abstract";
+import NotificationError from "../../@shared/Notification/notification.error";
 import Address from "../ValueObject/address";
 import CustomerInterface from "./customer.interface";
 
-export default class Customer implements CustomerInterface {
+export default class Customer extends Entity implements CustomerInterface {
 
     private _id: string;
     private _name: string;
@@ -10,15 +12,15 @@ export default class Customer implements CustomerInterface {
     private _rewardPoints: number = 0;
 
     constructor(id: string, name: string) {
+        super();
         this._id = id;
         this._name = name;
         this.validate();
     }
 
-    get id() {
+    get id(): string {
         return this._id;
     }
-
 
     get name(): string {
         return this._name
@@ -62,16 +64,29 @@ export default class Customer implements CustomerInterface {
     }
 
     validate() {
-        if (this._id.length === 0) {
-            throw new Error('Id is required');
+        if (this.id.length === 0) {
+            this.notification.addError({
+                message: 'Id is required',
+                context: 'customer',
+            });
         }
 
         if (this._name.length === 0) {
-            throw new Error('Name is required');
+            this.notification.addError({
+                message: 'Name is required',
+                context: 'customer',
+            });
         }
 
         if (this._name.length < 3) {
-            throw new Error('Name the minimum number of characters must be greater than 3');
+            this.notification.addError({
+                message: 'Name must be at least 3 characters',
+                context: 'customer',
+            });
+        }
+
+        if (this.notification.errorsCount() > 0) {
+            throw new NotificationError(this.notification.getErrors());
         }
 
     }
