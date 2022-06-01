@@ -6,19 +6,19 @@ describe("Customer unit test", () => {
     it("should throw error whe id is empty", () => {
         expect(() => {
             let customer = new Customer("", "Tiago");
-        }).toThrowError("Id is required");
+        }).toThrowError("customer: Id is required");
     });
 
     it("should throw error whe name is empty", () => {
         expect(() => {
             let customer = new Customer("123", "");
-        }).toThrowError("Name is required");
+        }).toThrowError("customer: Name is required, ");
     });
 
     it("should throw error whe name the minimum number", () => {
         expect(() => {
             let customer = new Customer("123", "a");
-        }).toThrowError("Name the minimum number of characters must be greater than 3");
+        }).toThrowError("customer: Name must be at least 3 characters");
     });
 
     it("should change name", () => {

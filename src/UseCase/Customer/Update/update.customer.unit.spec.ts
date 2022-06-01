@@ -48,9 +48,17 @@ describe("Unit Test update customer use case", () => {
         const customerRepository = MockRepository();
         const useCase = new UpdateCustomerUseCase(customerRepository);
         
-        input.name = 'mariana';
-        input.address.street = "";
+        const input2 = {
+            id: customer.id,
+            name: "John Updated",
+            address: {
+                street: "",
+                city: "City Updated",
+                zip: "Zip Updated",
+                number: "Number Updated",
+            },
+        }
 
-        await expect(useCase.execute(input)).rejects.toThrow("Street is required");
+        await expect(useCase.execute(input2)).rejects.toThrow("customer: Name is required, customer: Name must be at least 3 characters");
     });
 });

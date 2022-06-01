@@ -1,4 +1,7 @@
-export default class Address {
+import Entity from "../../@shared/Entity/entity.abstract";
+import NotificationError from "../../@shared/Notification/notification.error";
+
+export default class Address extends Entity {
 
     _street: string = '';
     _city: string = '';
@@ -6,7 +9,7 @@ export default class Address {
     _number: string = '';
 
     constructor(street: string, city: string, zipcode: string, number: string) {
-
+        super();
         this._street = street;
         this._city = city;
         this._zipcode = zipcode;
@@ -32,20 +35,36 @@ export default class Address {
 
     validate() {
         if (this._street.length === 0) {
-            throw new Error("Street is required");
+            this.notification.addError({
+                context: 'address',
+                message: 'Street is required'
+            });
         }
 
         if (this._number.length === 0) {
-            throw new Error("Number is required");
+            this.notification.addError({
+                context: 'address',
+                message: 'Number is required'
+            });
         }
 
         if (this._city.length === 0) {
-            throw new Error("City is required");
+            this.notification.addError({
+                context: 'address',
+                message: 'City is required'
+            });
         }
 
         if (this._zipcode.length === 0) {
-            throw new Error("Zip code is required");
+            this.notification.addError({
+                context: 'address',
+                message: 'Zip code is required'
+            });
         }
+
+        if(this.notification.hasErrors()) {
+            throw new NotificationError(this.notification.getErrors());
+        }   
     }
 
     toString() {
