@@ -1,6 +1,5 @@
 import Customer from "../../../Domain/Customer/Entity/customer";
 import CustomerRepositoryInterface from "../../../Domain/Customer/Repository/customer-repository.interface";
-import CustomerRepository from "../../../Infrastructure/Customer/Repository/Sequelize/customer.repository";
 import { InputListCustomerDto, OutputListCustomerDto } from "./list.customer.dto";
 
 export default class ListCustomerUseCase {
