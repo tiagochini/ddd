@@ -15,7 +15,7 @@ export default class FindCustomerUserCase {
                 return {
                     id: customer.id,
                     name: customer.name,
-                    addresses: {
+                    address: {
                         street: customer.Address.street,
                         city: customer.Address.city,
                         zip: customer.Address.zipcode,

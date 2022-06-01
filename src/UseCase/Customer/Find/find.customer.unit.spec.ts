@@ -32,7 +32,7 @@ describe('Unit Test find customer use case', () => {
         const output = {
             id: '123',
             name: 'John',
-            addresses: {
+            address: {
                 street: 'Street',
                 city: 'City',
                 zip: 'Zip',
