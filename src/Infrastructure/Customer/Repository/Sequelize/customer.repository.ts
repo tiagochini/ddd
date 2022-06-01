@@ -3,7 +3,7 @@ import CustomerRepositoryInteface from "../../../../Domain/Customer/Repository/c
 import Address from "../../../../Domain/Customer/ValueObject/address";
 import CustomerModel from "./customer.model";
 
-export default class CustumerRepository implements CustomerRepositoryInteface {
+export default class CustomerRepository implements CustomerRepositoryInteface {
     async create(entity: Customer): Promise<void> {
 
         await CustomerModel.create({
