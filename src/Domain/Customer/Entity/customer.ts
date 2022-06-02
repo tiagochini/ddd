@@ -1,5 +1,6 @@
 import Entity from "../../@shared/Entity/entity.abstract";
 import NotificationError from "../../@shared/Notification/notification.error";
+import CustomerValidatorFactory from "../Factory/customer.validator.factory";
 import Address from "../ValueObject/address";
 import CustomerInterface from "./customer.interface";
 
@@ -64,30 +65,10 @@ export default class Customer extends Entity implements CustomerInterface {
     }
 
     validate() {
-        if (this.id.length === 0) {
-            this.notification.addError({
-                message: 'Id is required',
-                context: 'customer',
-            });
-        }
+        CustomerValidatorFactory.create().validate(this);
 
-        if (this._name.length === 0) {
-            this.notification.addError({
-                message: 'Name is required',
-                context: 'customer',
-            });
-        }
-
-        if (this._name.length < 3) {
-            this.notification.addError({
-                message: 'Name must be at least 3 characters',
-                context: 'customer',
-            });
-        }
-
-        if (this.notification.errorsCount() > 0) {
+        if(this.notification.hasErrors()) {
             throw new NotificationError(this.notification.getErrors());
         }
-
     }
 }

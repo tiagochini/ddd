@@ -1,5 +1,6 @@
 import Entity from "../../@shared/Entity/entity.abstract";
 import NotificationError from "../../@shared/Notification/notification.error";
+import AddressValidatorFactory from "./Factory/address.validator.factory";
 
 export default class Address extends Entity {
 
@@ -34,33 +35,7 @@ export default class Address extends Entity {
     }
 
     validate() {
-        if (this._street.length === 0) {
-            this.notification.addError({
-                context: 'address',
-                message: 'Street is required'
-            });
-        }
-
-        if (this._number.length === 0) {
-            this.notification.addError({
-                context: 'address',
-                message: 'Number is required'
-            });
-        }
-
-        if (this._city.length === 0) {
-            this.notification.addError({
-                context: 'address',
-                message: 'City is required'
-            });
-        }
-
-        if (this._zipcode.length === 0) {
-            this.notification.addError({
-                context: 'address',
-                message: 'Zip code is required'
-            });
-        }
+        AddressValidatorFactory.create().validate(this);
 
         if(this.notification.hasErrors()) {
             throw new NotificationError(this.notification.getErrors());
