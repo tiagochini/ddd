@@ -35,7 +35,7 @@ describe("Product unit test", () => {
     it("should change price and name invalid", () => { 
         expect(() => {
             const product = new Product("123", "", 0);
-        }).toThrowError("product: Name is required, product: Price must be greater than 0");
+        }).toThrowError("product: Name is required, product: Name must be at least 3 characters, product: Price must be greater than 0");
     });
 
 });

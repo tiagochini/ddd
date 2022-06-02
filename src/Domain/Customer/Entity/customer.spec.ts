@@ -12,7 +12,7 @@ describe("Customer unit test", () => {
     it("should throw error whe name is empty", () => {
         expect(() => {
             let customer = new Customer("123", "");
-        }).toThrowError("customer: Name is required, ");
+        }).toThrowError("customer: Name is required");
     });
 
     it("should throw error whe name the minimum number", () => {
